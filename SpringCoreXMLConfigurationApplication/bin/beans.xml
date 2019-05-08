@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="hello1" class="com.spring.HelloSpring"></bean>
+<bean id="hello5" name="hello3;hello4" class="com.spring.HelloSpring"></bean>
+<bean id="hello2" class="com.spring.HelloSpring">
+<constructor-arg value="Good Morning"></constructor-arg>
+</bean>
+
+<bean id="person1" class="com.spring.Person">
+ <constructor-arg name="name" value="Devang"></constructor-arg>
+ <constructor-arg name="surname" value="Chauhan"></constructor-arg>
+</bean>
+<bean id="person2" class="com.spring.Person">
+ <constructor-arg index="0" value="Devang"></constructor-arg>
+ <constructor-arg index="1" value="Chauhan"></constructor-arg>
+</bean>
+
+<bean id="address" class="com.spring.Address">
+ <constructor-arg value="Ahmedabad"></constructor-arg>
+</bean>
+<bean id="person3" class="com.spring.Person">
+ <constructor-arg index="0" value="Devang"></constructor-arg>
+ <constructor-arg index="1" value="Chauhan"></constructor-arg>
+ <constructor-arg ref="address"></constructor-arg>
+</bean>
+
+
+
+</beans>

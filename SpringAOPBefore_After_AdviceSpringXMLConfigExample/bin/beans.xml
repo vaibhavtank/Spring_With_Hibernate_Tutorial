@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+  
+  <bean id="AccountService" class="com.spring.services.AccountServiceImpl" c:_0-ref="AccountDao"></bean>
+  <bean id="AccountDao" class="com.spring.dao.AccountDAOImpl"></bean>
+  <bean id="WelcomeAdvice" class="com.spring.advice.BeforeMethodAdviceExample"></bean>
+  <bean id="AfterAdvice" class="com.spring.advice.AfterMethodAdviceExample"></bean>
+ 
+  <bean id="id4" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+  <property name="proxyInterfaces" value="com.spring.services.AccountServices" />
+	<property name="interceptorNames" >
+		<list>
+			<value>beforeAdvisor</value>
+			<value>afterAdvisor</value>
+		</list>
+	</property>
+	 <property name="target">
+		<ref bean="AccountService"/>
+	</property>
+   </bean>  
+   
+   <bean id="mypointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+     <property name="mappedName">
+        <value>withdrow</value>
+     </property>
+   </bean>
+   
+   <bean name="beforeAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+   		<property name="advice">
+   		 	<ref local="WelcomeAdvice"/>
+   		</property>
+   		<property name="pointcut">
+   		 <ref local="mypointcut"/>
+   		</property>
+   </bean>
+   <bean name="afterAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+   		<property name="advice">
+   			<ref local="AfterAdvice"/>
+   		</property>
+   		<property name="pointcut">
+   		  <ref local="mypointcut"/>
+   		</property>
+   </bean> 
+
+</beans>

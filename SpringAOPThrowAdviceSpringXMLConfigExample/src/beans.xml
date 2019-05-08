@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="id1" class="com.spring.service.MyImpleClass" ></bean>
+   <bean id="id2" class="com.spring.advice.ThrowAdvice"></bean>
+   <bean id="id3" class="org.springframework.aop.framework.ProxyFactoryBean">
+      <property name="proxyInterfaces" value="com.spring.service.MyInterface"></property>
+      <property name="interceptorNames">
+      	<value>id2</value>
+      </property>
+      <property name="target">
+      	<ref bean="id1"/>
+      </property>
+   
+   </bean>
+
+</beans>

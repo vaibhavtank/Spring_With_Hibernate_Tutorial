@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="employeeService" class="com.spring.service.EmployeeServiceImpl" p:employeeDAO-ref="employeeDAO"></bean>
+<bean id="employeeDAO" class="com.spring.dao.EmployeeDAOImpl" c:_0-ref="ds" init-method="init" destroy-method="destroy"></bean>
+<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+  p:driverClassName="com.mysql.jdbc.Driver"
+  p:url="jdbc:mysql://localhost:3306/testDemo"
+  p:username="root"
+  p:password="" /> 
+  
+  <!--
+      Use this when working with Application Context
+  
+   <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"
+   p:location="classpath:JDBCProperties.properties"></bean>
+   
+  <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+  p:driverClassName="${driverClassName}"
+  p:url="${url}"
+  p:username="${dbuser}"
+  p:password="${password}" /> -->
+  
+ 
+</beans> 

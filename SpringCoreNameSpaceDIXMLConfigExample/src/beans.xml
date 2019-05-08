@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+
+ <bean id="hello1" class="com.spring.HelloSpring"></bean>
+ <bean id="hello2" class="com.spring.HelloSpring" c:_0="Good Morning"></bean>
+ <bean id="hello3" class="com.spring.HelloSpring" c:_0="Hello Devang" c:_1-ref="mylist"></bean>
+ <bean id="hello4" class="com.spring.HelloSpring" c:_0="Good Morning Devang" c:_1-ref="mylist" c:_2-ref="myset"></bean>
+ <bean id="hello5" class="com.spring.HelloSpring" c:_0="welcome Devang" c:_1-ref="mylist" c:_2-ref="myset" c:_3-ref="mymap"></bean>
+ <bean id="hello6" class="com.spring.HelloSpring" p:message="Devang Chauhan" p:mylist-ref="mylist" p:myset-ref="myset" p:mymap-ref="mymap"></bean>
+ 
+ <util:list id="mylist">
+  	<value>devang</value>
+  	<value>krunal</value>
+  	<value>Hetal</value>
+ </util:list>
+ 
+ <util:set id="myset">
+   <value>Ajay</value>
+   <value>Karina</value>
+   <value>Nisarg</value>
+ </util:set>
+ 
+ <util:map id="mymap">
+   <entry>
+    	<key><value>name</value></key>
+    	<value>Devang</value>
+    </entry>
+    <entry>
+    	<key><value>surname</value></key>
+    	<value>Chauhan</value>	
+   </entry>
+ </util:map>
+
+
+</beans>
